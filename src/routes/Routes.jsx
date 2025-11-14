@@ -111,7 +111,7 @@ export const router = createBrowserRouter([
   path: "hitlists/trip/:id",
   element: <TripDetails />,
   loader: ({ params }) =>
-    fetch(`https://ai-travel-web2.vercel.app/hitlists/trip/${params.id}`)
+    fetch(`http://10.10.7.126:5173/${params.id}`)
 },
 
       { path: "pricing", element: <PricingPlans /> },

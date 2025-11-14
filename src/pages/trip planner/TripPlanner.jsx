@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FiPlus, FiSearch } from "react-icons/fi";
 import { FaMicrophone } from "react-icons/fa";
 import TripCard from "./TripCard"
+import Icons from "../../utils/images";
 
 export default function TripPlanner() {
   const [messages, setMessages] = useState([
@@ -41,32 +42,24 @@ export default function TripPlanner() {
   return (
     <div className="flex h-screen bg-[#1e1e1e] text-white">
       {/* Sidebar */}
-      <div className="absolute bottom-0 w-64 h-[80vh] bg-[#2a2a2a] border-r border-gray-700 flex flex-col p-4 pt-32 rounded-lg">
-        <button className="flex items-center justify-center bg-[#1e1e1e] rounded-md py-2 mb-4 cursor-pointer">
-          <FiPlus className="mr-2" /> New Chat
+      <div className="absolute bottom-0 w-64 h-[80vh] bg-dark2 flex flex-col p-4  rounded-lg">
+        <button className="flex items-center gap-2 bg-transparent rounded-md py-2 mb-4 cursor-pointer">
+          <img src={Icons.newChat} alt="chatIcon" />
+          <h1 className="text-base">New Chat</h1>
         </button>
 
         <div className="relative mb-4">
-          <FiSearch className="absolute left-3 top-2.5 text-gray-400" />
+          <FiSearch className="absolute left-0 top-2.5 text-gray-400" />
           <input
             type="text"
             placeholder="Search chats..."
-            className="bg-[#1e1e1e] w-full rounded-md pl-9 pr-3 py-2 text-sm text-gray-300 outline-none placeholder:text-gray-500"
+            className="bg-transparent w-full rounded-md pl-9 pr-3 py-2 text-sm text-gray-300 outline-none"
           />
         </div>
 
         <div className="flex-1 overflow-y-auto space-y-2 scrollbar-thin scrollbar-thumb-gray-700">
-          <p className="text-xs text-gray-400 mb-1">Recent Chats</p>
-          {["Trip to Japan", "Europe Plan", "Weekend Getaway"].map(
-            (title, i) => (
-              <div
-                key={i}
-                className="bg-[#1e1e1e] hover:bg-[#3a3a3a] transition rounded-md px-3 py-2 text-sm cursor-pointer"
-              >
-                {title}
-              </div>
-            )
-          )}
+          <p className="text-white/50 mb-1">Chats</p>
+         
         </div>
       </div>
 

@@ -27,10 +27,25 @@ import hitlistIcon1 from '../assets/hitlistIcon1.png';
 import hitlistIcon2 from '../assets/hitlistIcon2.png';
 import hitlistIcon3 from '../assets/hitlistIcon3.png';
 import map from '../assets/map.png';
+import newChat from '../assets/newChat.svg';
+import chatBotTitle from '../assets/chatbot/chatbotTitle.png'
+import three from '../assets/chatbot/three.png';
+import food from '../assets/chatbot/food.png';
+import sport from '../assets/chatbot/sport.png';
+import beach from '../assets/chatbot/beatch.png';
+import nature from '../assets/chatbot/nature.png'
+
 
 
 
 const Icons = {
+  nature: nature,
+  three: three,
+  food: food,
+  sport: sport,
+  chatBotTitle: chatBotTitle,
+  beach: beach,
+  newChat: newChat,
   navLogo: logo,
   how1: how1,
   how2: how2,
