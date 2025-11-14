@@ -35,7 +35,7 @@ const Profile = () => {
         <img
           src={Icons.profile1}
           alt="Profile"
-          className="w-24 h-24 rounded-full border-4 border-gray-700 mb-4"
+          className="w-20 h-20 rounded-full border-4 border-gray-700 mb-4"
         />
         <h2 className="text-xl font-semibold">Tamim Sarker</h2>
         <p className="text-gray-400 text-sm">Tamim257@gmail.com</p>
