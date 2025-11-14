@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import Icons from "../utils/images";
-// import Icons from "../../utils/images";
-// import CreatePostModal from "./CreatePostModal";
 
-const Header = () => {
+export default function Header() {
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showCreatePost, setShowCreatePost] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false); // 👈 You can replace this with context later
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const navLinks = [
+  const menuItems = [
     { name: "Home", path: "/" },
     { name: "AI Trip Planner", path: "/trip-planner" },
     { name: "Expedition Feed", path: "/expedition" },
@@ -21,174 +18,108 @@ const Header = () => {
   ];
 
   return (
-    <>
-      <div className="w-full top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/10 fixed">
-        <div className="containerBox">
-          <header className="w-full">
-            <div className="flex items-center justify-between px-4 lg:px-[120px] py-4">
-              {/* Logo */}
-              <div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={() => navigate("/")}
-              >
-                <img
-                  src={Icons.navLogo}
-                  alt="Hitman Track"
-                  className="w-[150px] h-16"
-                />
-                <p className="text-[#319EE1] font-bold ml-1 text-lg">
-                  TrekBot.AI
-                </p>
-              </div>
+    <nav className="w-full fixed top-2 left-0 z-50 bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-x-10 ">
 
-              {/* 🔹 Desktop Nav */}
-              <nav className="hidden lg:flex gap-6 text-base">
-                {navLinks.map((link) => (
-                  <NavLink
-                    key={link.name}
-                    to={link.path}
-                    className={({ isActive }) =>
+        {/* Logo */}
+        <div className="md:ml-16">
+          <img src={Icons.navLogo} alt="" className="h-[80px]" />
+        </div>
+
+        {/* Desktop Menu + Buttons (Glass Box) */}
+        <div className="hidden md:flex items-center gap-4 border border-white/30 rounded-full px-6 py-1.5 backdrop-blur-md bg-white/10">
+
+          {menuItems.map((item, index) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <div key={index} className="group flex items-center gap-1.5">
+
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-Primary font-semibold"
+                      : "text-white/80 hover:text-Primary transition"
+                  }
+                >
+                  {item.name}
+                </NavLink>
+
+                {index !== menuItems.length - 1 && (
+                  <span
+                    className={
                       isActive
-                        ? "text-red-500 font-semibold"
-                        : "text-white hover:text-red-400 transition"
+                        ? "text-Primary"
+                        : "text-white/40 group-hover:text-Primary transition"
                     }
                   >
-                    {link.name}
-                  </NavLink>
-                ))}
-              </nav>
-
-              {/* 🔹 Right Side (Desktop) */}
-              <div className="hidden lg:flex items-center gap-3">
-                {!loggedIn ? (
-                  <>
-                    {/* Login & Signup Buttons */}
-                    <button
-                      onClick={() => navigate("/signin")}
-                      className="px-4 py-1.5 border border-white rounded-full hover:bg-white hover:text-black transition"
-                    >
-                      Log in
-                    </button>
-                    <button
-                      onClick={() => navigate("/signup")}
-                      className="px-4 py-1.5 bg-[#319EE1] rounded-full hover:bg-[#1d7ec7] text-white transition"
-                    >
-                      Sign up
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    {/* Create Post & Profile */}
-                    <button
-                      onClick={() => setShowCreatePost(true)}
-                      className="px-4 py-1.5 bg-Primary text-white rounded-lg cursor-pointer"
-                    >
-                      + Create Post
-                    </button>
-                    <button
-                      className="cursor-pointer"
-                      onClick={() => navigate("/profile")}
-                    >
-                      <img
-                        src={Icons.profile1}
-                        alt="profile"
-                        className="w-10 h-10 rounded-full"
-                      />
-                    </button>
-                  </>
+                    |
+                  </span>
                 )}
               </div>
+            );
+          })}
 
-              {/* 🔹 Mobile Menu Button */}
-              <div className="lg:hidden flex items-center">
-                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                  {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-                </button>
-              </div>
-            </div>
+          <button onClick={()=>navigate('/signin')} className="ml-6 px-3 py-1.5 text-white/90 border border-white/40 rounded-full hover:bg-white/10 transition">
+            Login
+          </button>
 
-            {/* 🔹 Mobile Menu */}
-            {mobileMenuOpen && (
-              <div className="lg:hidden bg-white w-full border-t border-gray-200">
-                <nav className="flex flex-col gap-4 px-4 py-4">
-                  {navLinks.map((link) => (
-                    <NavLink
-                      key={link.name}
-                      to={link.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-red-500 font-semibold"
-                          : "hover:text-red-400 transition"
-                      }
-                    >
-                      {link.name}
-                    </NavLink>
-                  ))}
-
-                  <div className="flex flex-col gap-2 mt-4">
-                    {!loggedIn ? (
-                      <>
-                        <button
-                          onClick={() => {
-                            navigate("/signin");
-                            setMobileMenuOpen(false);
-                          }}
-                          className="w-[150px] px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-100 transition"
-                        >
-                          Log in
-                        </button>
-                        <button
-                          onClick={() => {
-                            navigate("/signup");
-                            setMobileMenuOpen(false);
-                          }}
-                          className="w-[150px] px-4 py-1.5 bg-[#319EE1] rounded-full text-white hover:bg-[#1d7ec7] transition"
-                        >
-                          Sign up
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => {
-                            setShowCreatePost(true);
-                            setMobileMenuOpen(false);
-                          }}
-                          className="w-max px-4 py-1.5 border bg-Primary text-white"
-                        >
-                          + Create Post
-                        </button>
-                        <button
-                          onClick={() => {
-                            navigate("/profile");
-                            setMobileMenuOpen(false);
-                          }}
-                          className="w-max flex items-center gap-2"
-                        >
-                          <img
-                            src={Icons.profile1}
-                            alt="profile"
-                            className="w-8 h-8 rounded-full"
-                          />
-                          Profile
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </nav>
-              </div>
-            )}
-          </header>
+          <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+            Get Started
+          </button>
         </div>
+
+        {/* Mobile Hamburger Icon */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <FiX /> : <FiMenu />}
+        </button>
       </div>
 
-      {/* 🔹 Create Post Modal */}
-      {showCreatePost && (
-        <CreatePostModal onClose={() => setShowCreatePost(false)} />
-      )}
-    </>
-  );
-};
+      {/* Mobile Menu (Dropdown Glass Effect) */}
+      {open && (
+        <div className="md:hidden w-full px-4 pb-4">
+          <div className="border border-white/30 rounded-2xl p-4 backdrop-blur-md bg-white/10">
 
-export default Header;
+            {/* Menu Items */}
+            <div className="flex flex-col gap-4">
+              {menuItems.map((item) => {
+                const isActive = location.pathname === item.path;
+
+                return (
+                  <NavLink
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setOpen(false)}
+                    className={
+                      isActive
+                        ? "text-blue-400 font-semibold"
+                        : "text-white/80 hover:text-blue-400 transition"
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                );
+              })}
+            </div>
+
+            <hr className="my-4 border-white/30" />
+
+            {/* Buttons */}
+            <div className="flex flex-col gap-3">
+              <button className="w-full py-2 text-white/90 border border-white/40 rounded-xl hover:bg-white/10 transition">
+                Login
+              </button>
+
+              <button className="w-full py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
