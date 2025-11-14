@@ -92,9 +92,9 @@ const TripDetails = () => {
               alt=""
               className="h-12 w-12 rounded-full"
             />
-            <button className="bg-dark2 px-3 py-[6px] rounded text-sm cursor-pointer flex items-center gap-x-1.5">
+            <button className="bg-dark2 px-3 py-[6px] text-Primary rounded text-sm cursor-pointer flex items-center gap-x-1.5">
               {" "}
-              <RiShareForwardLine size={23} /> Add to calender
+              <RiShareForwardLine size={23} /> Share your Hitlist
             </button>
             <button className="bg-dark2 px-3 py-[6px] rounded text-sm cursor-pointer flex items-center gap-x-1.5">
               {" "}
