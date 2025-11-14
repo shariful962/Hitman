@@ -111,7 +111,7 @@ export const router = createBrowserRouter([
   path: "hitlists/trip/:id",
   element: <TripDetails />,
   loader: ({ params }) =>
-    fetch(`http://10.10.7.126:5173/${params.id}`)
+    fetch(`https://hitman-umber.vercel.app/${params.id}`)
 },
 
       { path: "pricing", element: <PricingPlans /> },
