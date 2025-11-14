@@ -118,7 +118,7 @@ const Signup = () => {
   Already have an account?{" "}
   <span
     className="text-white cursor-pointer hover:underline font-semibold"
-    onClick={() => navigate("/login")}
+    onClick={() => navigate("/signin")}
   >
     Sign In
   </span>
