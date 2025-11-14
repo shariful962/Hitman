@@ -33,12 +33,24 @@ import three from '../assets/chatbot/three.png';
 import food from '../assets/chatbot/food.png';
 import sport from '../assets/chatbot/sport.png';
 import beach from '../assets/chatbot/beatch.png';
-import nature from '../assets/chatbot/nature.png'
+import nature from '../assets/chatbot/nature.png';
+import shareButton from '../assets/shareButton.png';
+import calender from '../assets/addCalender.png'
+import sun from '../assets/view/sun.png';
+import man from '../assets/view/man.png';
+import dinner from '../assets/view/dinner.png';
+import evening from '../assets/view/evening.png'
 
 
 
 
 const Icons = {
+  evening: evening,
+  sun: sun,
+  dinner: dinner,
+  man: man,
+  calender: calender,
+  shareButton: shareButton,
   nature: nature,
   three: three,
   food: food,
