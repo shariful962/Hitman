@@ -38,7 +38,7 @@ const TripDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto text-white mt-10 space-y-8 pt-28 pb-4">
+    <div className="max-w-3xl mx-auto text-white mt-10 space-y-8 pt-28 pb-4">
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}

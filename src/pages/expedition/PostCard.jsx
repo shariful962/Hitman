@@ -3,6 +3,8 @@ import { Heart, MessageCircle } from "lucide-react";
 import { RiShareForwardLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
 
+
+
 const PostCard = ({ profile, name, time, location, caption, image }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -117,3 +119,7 @@ const PostCard = ({ profile, name, time, location, caption, image }) => {
 };
 
 export default PostCard;
+
+
+
+

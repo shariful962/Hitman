@@ -9,11 +9,25 @@ import {
   Trash2,
 } from "lucide-react";
 import { FaChevronRight } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Icons from "../../utils/images";
 
 
 const Profile = () => {
+   const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+    // Remove login status from localStorage
+    localStorage.removeItem("isLoggedIn");
+
+    // Optional: remove other user-related info
+    // localStorage.removeItem("userEmail");
+    // localStorage.removeItem("userName");
+
+    // Redirect to login page
+    navigate("/");
+  };
   return (
     <div className="min-h-screen bg-dark flex flex-col items-center justify-center py-10 text-white pt-20">
       {/* profile name and email with image  */}
@@ -106,7 +120,7 @@ const Profile = () => {
             </Link>
             </div>
            <div>
-             <Link to="/profile/saved">
+             {/* <button>
             <div className="flex items-center justify-between cursor-pointer">
                 <div className="flex items-center gap-x-3">
                     <LogOut /> <span>Logout</span>
@@ -115,7 +129,18 @@ const Profile = () => {
                     <FaChevronRight />
                 </div>
             </div>
-            </Link>
+            </button> */}
+
+            <button onClick={handleLogout} className="w-full text-left">
+              <div className="flex items-center justify-between cursor-pointer">
+                <div className="flex items-center gap-x-3">
+                  <LogOut /> <span>Logout</span>
+                </div>
+                <div>
+                  <FaChevronRight />
+                </div>
+              </div>
+            </button>
            </div>
            <div>
              <Link to="/profile/saved">

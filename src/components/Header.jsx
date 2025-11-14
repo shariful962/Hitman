@@ -31,12 +31,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-x-4">
 
         {/* Logo */}
-        <div className="md:ml-16">
+        <div className="md:ml-16 mr-16">
           <img src={Icons.navLogo} alt="logo" className="h-[80px]" />
         </div>
 
         {/* Desktop Menu + Buttons inside glass box */}
-        <div className="hidden md:flex items-center gap-4 border border-white/30 rounded-full px-6 py-1.5 backdrop-blur-md bg-white/10">
+        <div className="hidden md:flex items-center gap-4 border border-white/30 rounded-full px-6 py-2.5 backdrop-blur-md bg-white/10">
           {menuItems.map((item, index) => {
             const isActive = location.pathname === item.path;
             return (
@@ -70,11 +70,11 @@ export default function Header() {
             <>
               <button
                 onClick={() => navigate("/signin")}
-                className="ml-6 px-3 py-1.5 text-white/90 border border-white/40 rounded-full hover:bg-white/10 transition"
+                className="ml-6 px-3 py-1.5 text-white/90 bg-Primary rounded-lg"
               >
                 Login
               </button>
-              <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+              <button className="px-4 py-1.5 bg-Primary text-white rounded-lg">
                 Get Started
               </button>
             </>

@@ -56,4 +56,3 @@ const Expedition = () => {
 };
 
 export default Expedition;
-
