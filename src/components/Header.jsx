@@ -70,7 +70,7 @@ export default function Header() {
             <>
               <button
                 onClick={() => navigate("/signin")}
-                className="ml-6 px-3 py-1.5 text-white/90 bg-Primary rounded-lg"
+                className="ml-6 px-3 py-1.5 text-white/90 bg-Primary rounded-lg cursor-pointer"
               >
                 Login
               </button>
@@ -81,7 +81,7 @@ export default function Header() {
           ) : (
             <button
               onClick={() => setModalOpen(true)}
-              className="ml-6 px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
+              className="ml-6 px-4 py-1.5 bg-Primary text-white rounded-lg cursor-pointer"
             >
               Create Post
             </button>
@@ -95,7 +95,7 @@ export default function Header() {
             className="ml-4 w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden cursor-pointer"
           >
             <img
-              src={Icons.profilePic}
+              src={Icons.profile1}
               alt="Profile"
               className="w-full h-full object-cover"
             />
