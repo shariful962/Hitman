@@ -168,7 +168,7 @@ export default function TripPlanner() {
     <div className="flex h-screen bg-[#1e1e1e] text-white">
 
       {/* Sidebar */}
-      <div className="absolute bottom-0 w-64 h-[80vh] bg-dark2 flex flex-col p-4 rounded-lg">
+      <div className="absolute bottom-0 w-64 min-h-[82vh] bg-dark2 flex flex-col p-4 rounded-lg">
         <button className="flex items-center gap-2 bg-transparent rounded-md py-2 mb-4 cursor-pointer">
           <img src={Icons.newChat} alt="chatIcon" />
           <h1 className="text-base">New Chat</h1>

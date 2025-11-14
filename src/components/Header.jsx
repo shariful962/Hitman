@@ -81,9 +81,9 @@ export default function Header() {
           ) : (
             <button
               onClick={() => setModalOpen(true)}
-              className="ml-6 px-4 py-1.5 bg-Primary text-white rounded-lg cursor-pointer"
+              className="ml-6 px-3 py-1 bg-Primary text-white rounded-lg cursor-pointer flex items-center gap-x-1.5"
             >
-              Create Post
+              <span className="text-xl">+</span> Create Post
             </button>
           )}
         </div>

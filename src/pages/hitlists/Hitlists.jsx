@@ -497,7 +497,7 @@ const Hitlists = () => {
 
                 <button
                   onClick={() => navigate(`/hitlists/trip/${trip.id}`)}
-                  className="mt-4 w-full bg-Primary text-white py-2 rounded-lg font-medium cursor-pointer"
+                  className="mt-4 w-full bg-Primary text-white py-1.5 rounded-lg font-medium cursor-pointer"
                 >
                   View Details
                 </button>

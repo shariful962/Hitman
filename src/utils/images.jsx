@@ -40,12 +40,14 @@ import sun from '../assets/view/sun.png';
 import man from '../assets/view/man.png';
 import dinner from '../assets/view/dinner.png';
 import evening from '../assets/view/evening.png'
+import calIcn from "../assets/view/calenderIcon.png"
 
 
 
 
 const Icons = {
   evening: evening,
+  calIcn: calIcn,
   sun: sun,
   dinner: dinner,
   man: man,
