@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+*{
+  font-family: "Poppins", sans-serif;
+
+}
+@theme {
+  --color-dark: #282727;
+  --color-dark2: #000000;
+  --color-Primary: #EB2124;
+  --color-Secondary: #EE4A4D;
+  --color-Blue: #092354;
+}
+
+.containerBox {
+  @apply max-w-[1536px] mx-auto;
+}
+.authContainer {
+  @apply bg-[#1F1D1D23] backdrop-blur-2xl rounded-xl  p-8 w-[500px] border border-white/20 text-white
+}
+.form-div {
+  @apply flex items-center gap-2 bg-white/10 border border-Blue/20 p-3 rounded-lg mt-1;
+}
+.form-control {
+  @apply bg-transparent w-full outline-none placeholder-white/70 text-sm;
+}
+.authButton {
+  @apply w-full bg-Secondary/90 py-2.5 rounded-lg font-medium hover:bg-Secondary transition duration-300 cursor-pointer;
+}
+
+.flexCenter{
+  @apply flex items-center justify-center;
+}
+
+
+/* https://chatgpt.com/c/690a5236-cfa4-8321-ba25-fc1ba9ca327f  */
+
+
+
+/* ✅ Underline animation */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ef4444; /* red-500 */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ✅ Active link underline */
+.nav-link-active::after {
+  width: 100%;
+}
+
+
+
+/* Hide scrollbar but keep scroll functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
