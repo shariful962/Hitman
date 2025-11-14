@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import Icons from "../utils/images";
+import CreatePostModal from "./navbar/CreatePostModal";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const location = useLocation();
+  const [open, setOpen] = useState(false);
+   const [modalOpen, setModalOpen] = useState(false); 
+
+  // Check login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(loggedIn === "true");
+  }, [location.pathname]);
 
   const menuItems = [
     { name: "Home", path: "/" },
@@ -19,21 +28,19 @@ export default function Header() {
 
   return (
     <nav className="w-full fixed top-2 left-0 z-50 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-x-10 ">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-x-4">
 
         {/* Logo */}
         <div className="md:ml-16">
-          <img src={Icons.navLogo} alt="" className="h-[80px]" />
+          <img src={Icons.navLogo} alt="logo" className="h-[80px]" />
         </div>
 
-        {/* Desktop Menu + Buttons (Glass Box) */}
+        {/* Desktop Menu + Buttons inside glass box */}
         <div className="hidden md:flex items-center gap-4 border border-white/30 rounded-full px-6 py-1.5 backdrop-blur-md bg-white/10">
-
           {menuItems.map((item, index) => {
             const isActive = location.pathname === item.path;
             return (
               <div key={index} className="group flex items-center gap-1.5">
-
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
@@ -44,7 +51,6 @@ export default function Header() {
                 >
                   {item.name}
                 </NavLink>
-
                 {index !== menuItems.length - 1 && (
                   <span
                     className={
@@ -60,14 +66,41 @@ export default function Header() {
             );
           })}
 
-          <button onClick={()=>navigate('/signin')} className="ml-6 px-3 py-1.5 text-white/90 border border-white/40 rounded-full hover:bg-white/10 transition">
-            Login
-          </button>
-
-          <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-            Get Started
-          </button>
+          {!isLoggedIn ? (
+            <>
+              <button
+                onClick={() => navigate("/signin")}
+                className="ml-6 px-3 py-1.5 text-white/90 border border-white/40 rounded-full hover:bg-white/10 transition"
+              >
+                Login
+              </button>
+              <button className="px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                Get Started
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setModalOpen(true)}
+              className="ml-6 px-4 py-1.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
+            >
+              Create Post
+            </button>
+          )}
         </div>
+
+        {/* Profile Picture outside the glass box (Desktop) */}
+        {isLoggedIn && (
+          <button
+            onClick={() => navigate("/profile")}
+            className="ml-4 w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden cursor-pointer"
+          >
+            <img
+              src={Icons.profilePic}
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </button>
+        )}
 
         {/* Mobile Hamburger Icon */}
         <button
@@ -78,7 +111,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu (Dropdown Glass Effect) */}
+      {/* Mobile Menu */}
       {open && (
         <div className="md:hidden w-full px-4 pb-4">
           <div className="border border-white/30 rounded-2xl p-4 backdrop-blur-md bg-white/10">
@@ -87,7 +120,6 @@ export default function Header() {
             <div className="flex flex-col gap-4">
               {menuItems.map((item) => {
                 const isActive = location.pathname === item.path;
-
                 return (
                   <NavLink
                     key={item.name}
@@ -107,19 +139,50 @@ export default function Header() {
 
             <hr className="my-4 border-white/30" />
 
-            {/* Buttons */}
+            {/* Mobile Buttons */}
             <div className="flex flex-col gap-3">
-              <button className="w-full py-2 text-white/90 border border-white/40 rounded-xl hover:bg-white/10 transition">
-                Login
-              </button>
+              {!isLoggedIn ? (
+                <>
+                  <button
+                    onClick={() => navigate("/signin")}
+                    className="w-full py-2 text-white/90 border border-white/40 rounded-xl hover:bg-white/10 transition"
+                  >
+                    Login
+                  </button>
+                  <button className="w-full py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+                    Get Started
+                  </button>
+                </>
+              ) : (
+                <div className="flex items-center gap-3 mt-3">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="flex-1 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+                  >
+                    Create Post
+                  </button>
 
-              <button className="w-full py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-                Get Started
-              </button>
+                  {/* Profile Picture Mobile outside the border */}
+                  <button
+                    onClick={() => navigate("/profile")}
+                    className="w-10 h-10 rounded-full border-2 border-white/30 overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={Icons.profilePic}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
+
+      {modalOpen && <CreatePostModal onClose={() => setModalOpen(false)} />}
     </nav>
   );
 }
+
+
