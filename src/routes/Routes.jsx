@@ -92,6 +92,7 @@ import TermsCondition from "../pages/profile/TermsCondition";
 import HelpSupport from "../pages/profile/HelpSupport";
 import FAQ from "../pages/profile/FAQ";
 import TripDetails from "../pages/hitlists/TripDetails";
+import AboutUs from "../pages/about/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +123,7 @@ export const router = createBrowserRouter([
       { path: "profile/privacy-policy", element: <PrivacyPolicy /> },
       { path: "profile/terms-condition", element: <TermsCondition /> },
       { path: "profile/help-support", element: <HelpSupport /> },
+      { path: "about", element: <AboutUs /> },
     ],
   },
 

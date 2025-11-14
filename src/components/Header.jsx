@@ -31,7 +31,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-x-4">
 
         {/* Logo */}
-        <div className="md:ml-16 mr-16">
+        <div className="md:ml-16 mr-16 cursor-pointer" onClick={()=>navigate('/')} >
           <img src={Icons.navLogo} alt="logo" className="h-[80px]" />
         </div>
 
