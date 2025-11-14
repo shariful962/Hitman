@@ -120,6 +120,9 @@
 //   );
 // }
 
+
+
+
 import React, { useState, useRef, useEffect } from "react";
 import { FiPlus, FiSearch } from "react-icons/fi";
 import { FaMicrophone } from "react-icons/fa";
@@ -168,11 +171,14 @@ export default function TripPlanner() {
     <div className="flex h-screen bg-[#1e1e1e] text-white">
 
       {/* Sidebar */}
-      <div className="absolute bottom-0 w-64 min-h-[82vh] bg-dark2 flex flex-col p-4 rounded-lg">
-        <button className="flex items-center gap-2 bg-transparent rounded-md py-2 mb-4 cursor-pointer">
-          <img src={Icons.newChat} alt="chatIcon" />
-          <h1 className="text-base">New Chat</h1>
-        </button>
+      <div className="absolute bottom-0 w-64 min-h-[100vh] bg-dark2 flex flex-col p-4 rounded-lg">
+        <div className="mb-8">
+          <h1 className="mt-4 font-bold ">Your Journey Starts Here</h1>
+        </div>
+       <button className="flex items-center gap-2 bg-transparent rounded-md py-2 mb-4 cursor-pointer z-50">
+  <img src={Icons.newChat} alt="chatIcon" className="cursor-pointer" />
+  <h1 className="text-base cursor-pointer">New Chat</h1>
+</button>
 
         <div className="relative mb-4">
           <FiSearch className="absolute left-0 top-2.5 text-gray-400" />
@@ -266,4 +272,9 @@ export default function TripPlanner() {
     </div>
   );
 }
+
+
+
+
+
 

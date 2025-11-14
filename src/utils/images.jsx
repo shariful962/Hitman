@@ -42,13 +42,15 @@ import dinner from '../assets/view/dinner.png';
 import evening from '../assets/view/evening.png'
 import calIcn from "../assets/view/calenderIcon.png"
 import img from '../assets/chatbot/postImage.png';
-import loc from '../assets/chatbot/postLocation.png'
+import loc from '../assets/chatbot/postLocation.png';
+import plane from '../assets/chatbot/plane.svg'
 
 
 
 
 const Icons = {
   evening: evening,
+  plane: plane,
   img: img,
   loc: loc,
   calIcn: calIcn,

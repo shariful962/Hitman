@@ -182,7 +182,7 @@ const Hitlists = () => {
   return (
     <div className="containerBox px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-[42px] mt-28 font-medium mb-6 ml-3 text-white">
+        <h1 className="text-3xl md:text-[42px] mt-34 font-medium mb-4 ml-3 text-white">
           Hitlists
         </h1>
 
