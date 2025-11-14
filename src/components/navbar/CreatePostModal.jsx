@@ -94,26 +94,29 @@ const CreatePostModal = ({ onClose }) => {
             />
 
             {/* Image upload icon */}
-            <FaImage size={28}
+            {/* <img size={28}
               className="cursor-pointer hover:text-blue-400"
               onClick={() => fileInputRef.current.click()}
-            />
+            /> */}
+            <img src={Icons.img} alt="" className="w-8 h-8 cursor-pointer" onClick={() => fileInputRef.current.click()} />
 
             {/* (Optional) Location icon */}
-            <FaMapMarkerAlt size={28} className="cursor-pointer hover:text-Primary" />
+            
           </div>
 
           <button
             onClick={handlePost}
             disabled={!postText.trim() && !imagePreview}
-            className={`px-6 w-[150px] py-1.5 rounded-full font-medium ${
+            className={`px-6 w-[80%] py-1.5 rounded-full font-medium ${
               postText.trim() || imagePreview
-                ? "bg-Primary hover:opacity-90 cursor-pointer"
-                : "bg-gray-600 cursor-not-allowed"
+                ? "bg-dark cursor-pointer"
+                : "bg-dark cursor-not-allowed"
             }`}
           >
             Post
           </button>
+          {/* <FaMapMarkerAlt size={28} className="cursor-pointer hover:text-Primary" /> */}
+          <img src={Icons.loc} alt="" className="w-8 h-8 cursor-pointer" />
         </div>
       </div>
     </div>

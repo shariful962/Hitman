@@ -58,7 +58,7 @@ const Profile = () => {
             </Link>
             </div>
            <div>
-             <Link to="/profile/saved">
+             <Link to="/hitlists">
             <div className="flex items-center justify-between cursor-pointer">
                 <div className="flex items-center gap-x-3">
                     <Bookmark /> <span>Saved</span>

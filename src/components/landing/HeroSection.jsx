@@ -1,8 +1,10 @@
 import React from "react";
 import Banner from "../../assets/Banner.png";
 import Icons from "../../utils/images";
+import { useNavigate } from "react-router";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="">
@@ -26,7 +28,7 @@ const HeroSection = () => {
                 placeholder="Make your travel experience better"
                 className="w-full sm:w-96 px-5 py-3 bg-white text-gray-900 rounded-[16px] focus:outline-none"
               />
-              <button className="lg:absolute lg:top-0 lg:right-0 px-6 py-3 bg-red-500 text-white rounded-[16px] hover:bg-red-600 transition">
+              <button onClick={()=>navigate('/trip-planner')} className="lg:absolute lg:top-0 lg:right-0 px-6 py-3 bg-red-500 text-white rounded-[16px] hover:bg-red-600 transition cursor-pointer">
                 Generate Plan
               </button>
             </div>

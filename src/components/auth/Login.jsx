@@ -1,7 +1,4 @@
 
-
-
-
 // import React, { useState } from "react";
 // import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 // import authBg from "../../assets/authBg.jpg";
@@ -18,26 +15,26 @@
 //     e.preventDefault();
 //     console.log("Email:", email);
 //     console.log("Password:", password);
-    
-//     //  API call / authentication 
-//     navigate('/')
-   
+
+//     // Simulate login
+//     localStorage.setItem("isLoggedIn", "true");
+
+//     // Navigate to home page
+//     navigate("/");
 //   };
 
 //   return (
 //     <div
 //       className="h-screen w-full bg-cover bg-center flex items-center justify-center px-4"
-//      style={{ backgroundImage: `url(${authBg})` }}
+//       style={{ backgroundImage: `url(${authBg})` }}
 //     >
 //       <div className="authContainer">
 
-//         <h2 className="text-3xl md:text-[2.5rem]  font-medium text-center">Welcome Back</h2>
+//         <h2 className="text-3xl md:text-[2.5rem] font-medium text-center">Welcome Back</h2>
 //         <p className="text-center md:text-lg mt-1 mb-6">Login to your account</p>
 
-//         {/* FORM START */}
 //         <form onSubmit={handleSubmit}>
 
-//           {/* Email Input */}
 //           <label className="text-sm">Enter your E-mail or Number</label>
 //           <div className="form-div">
 //             <FiMail />
@@ -50,7 +47,6 @@
 //             />
 //           </div>
 
-//           {/* Password Input */}
 //           <label className="text-sm mt-4 block">Password</label>
 //           <div className="form-div">
 //             <FiLock />
@@ -72,20 +68,19 @@
 //             <label className="flex items-center gap-1 cursor-pointer">
 //               <input type="checkbox" /> Remember me
 //             </label>
-//             <button type="button" onClick={()=>navigate('/forgotpassword')} className="hover:underline cursor-pointer">
+//             <button
+//               type="button"
+//               onClick={() => navigate("/forgotpassword")}
+//               className="hover:underline cursor-pointer"
+//             >
 //               Forgot password?
 //             </button>
 //           </div>
 
-//           <button
-//             type="submit"
-//             className="authButton mt-6"
-//           >
+//           <button type="submit" className="authButton mt-6">
 //             Login
 //           </button>
-
 //         </form>
-//         {/* FORM END */}
 
 //         <div className="flex items-center my-4">
 //           <div className="flex-1 h-px bg-white/30"></div>
@@ -93,12 +88,14 @@
 //           <div className="flex-1 h-px bg-white/30"></div>
 //         </div>
 
-//         {/* Social */}
 //         <div className="flex justify-center gap-6">
-//           <button className="bg-white h-10 w-10 flexCenter p-2 rounded-full"> <img src={Icons.google} alt="google icon" /> </button>
-//           <button className="bg-white h-10 w-10 flexCenter p-2 rounded-full"> <img src={Icons.apple} alt="apple icon" /> </button>
+//           <button className="bg-white h-10 w-10 flexCenter p-2 rounded-full">
+//             <img src={Icons.google} alt="google icon" />
+//           </button>
+//           <button className="bg-white h-10 w-10 flexCenter p-2 rounded-full">
+//             <img src={Icons.apple} alt="apple icon" />
+//           </button>
 //         </div>
-
 //       </div>
 //     </div>
 //   );
@@ -137,12 +134,10 @@ const Login = () => {
       style={{ backgroundImage: `url(${authBg})` }}
     >
       <div className="authContainer">
-
         <h2 className="text-3xl md:text-[2.5rem] font-medium text-center">Welcome Back</h2>
         <p className="text-center md:text-lg mt-1 mb-6">Login to your account</p>
 
         <form onSubmit={handleSubmit}>
-
           <label className="text-sm">Enter your E-mail or Number</label>
           <div className="form-div">
             <FiMail />
@@ -185,9 +180,21 @@ const Login = () => {
             </button>
           </div>
 
-          <button type="submit" className="authButton mt-6">
+          {/* Login Button */}
+          <button type="submit" className="authButton mt-6 w-full">
             Login
           </button>
+
+          {/* Sign Up Link BELOW Login Button */}
+          <p className="text-center mt-4 text-sm font-semibold">
+            Don't have an account?{" "}
+            <span
+              className="text-white cursor-pointer hover:underline"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </span>
+          </p>
         </form>
 
         <div className="flex items-center my-4">

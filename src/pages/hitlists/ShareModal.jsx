@@ -1,3 +1,4 @@
+// src/components/modals/ShareModal.jsx
 import React from "react";
 import { FiX } from "react-icons/fi";
 import Icons from "../../utils/images";
@@ -19,23 +20,12 @@ const ShareModal = ({ isOpen, onClose, destinationData }) => {
         </div>
 
         {/* Profile + Caption */}
-        {/* <div className="px-5 py-4">
-          <div className="flex items-center gap-3 mb-3">
-            <img
-              src={Icons.profile1}
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div>
-              <h3 className="font-medium">{destinationData.name}</h3>
-              <p className="text-gray-400 text-sm">What's on your mind?</p>
-            </div>
-          </div>
-        </div> */}
         <div className="px-5 py-4">
           <div className="flex items-center gap-3 mb-3">
             <img
               src={Icons.profile1}
               className="w-10 h-10 rounded-full object-cover"
+              alt="profile"
             />
             <div>
               <h3 className="font-medium">{destinationData.name}</h3>
@@ -46,17 +36,15 @@ const ShareModal = ({ isOpen, onClose, destinationData }) => {
           {/* Text Input */}
           <textarea
             value={destinationData.userText}
-            onChange={
-              (e) => (destinationData.userText = e.target.value) // temporary local text
-            }
+            onChange={(e) => (destinationData.userText = e.target.value)} // temporary local text
             placeholder="Write something..."
-            className="w-full bg-dark3 border border-white/10 rounded-lg p-3 text-sm text-gray-300 outline-none  resize-none h-12"
+            className="w-full bg-dark3 border border-white/10 rounded-lg p-3 text-sm text-gray-300 outline-none resize-none h-12"
           ></textarea>
         </div>
 
-        {/* ---- SHARE CARD BELOW ---- */}
+        {/* Share Card */}
         <div className="px-5 pb-5">
-          <div className="bg-dark2  rounded-lg py-4 px-3 border border-white/5 max-w-[300px] mx-auto">
+          <div className="bg-dark2 rounded-lg py-4 px-3 border border-white/5 max-w-[300px] mx-auto">
             {/* Image */}
             <img
               src={destinationData.image}
@@ -66,41 +54,45 @@ const ShareModal = ({ isOpen, onClose, destinationData }) => {
 
             {/* Title */}
             <h2 className="flex items-center gap-x-3 mt-3">
-              <img src={Icons.chatBotTitle} alt="" className="h-7.5 w-7.5" />{" "}
+              <img src={Icons.chatBotTitle} alt="" className="h-7.5 w-7.5" />
               {destinationData.title}
             </h2>
 
+            {/* Info */}
             <div className="flex items-center text-sm text-gray-300 gap-2 mt-2.5 mb-2">
               <div className="flex items-center gap-2.5">
                 <img src={Icons.three} alt="" />
-                <h1>3 days • 2 nights</h1>
+                <h1>3 days • Land Marks</h1>
               </div>
               <span>•</span>
               <div className="flex items-center gap-2.5">
-                <img src={Icons.sport} alt="" /> <h1>6 Spots</h1>
+                {/* <img src={Icons.sport} alt="" /> */}
+                <h1>Culture</h1>
               </div>
             </div>
 
+            {/* Tags */}
             <div className="flex gap-3 mb-3 text-sm mt-3">
-              <div className="flex items-center gap-2">
-                <img src={Icons.beach} alt="" className="w-6 h-6" />{" "}
+              {/* <div className="flex items-center gap-2">
+                <img src={Icons.beach} alt="" className="w-6 h-6" />
                 <h1>Beach</h1>
-              </div>
+              </div> */}
               <div className="flex items-center gap-2">
-                <img src={Icons.nature} alt="" className="w-6 h-6" />{" "}
+                <img src={Icons.nature} alt="" className="w-6 h-6" />
                 <h1>Nature</h1>
               </div>
               <div className="flex items-center gap-2">
-                <img src={Icons.food} alt="" className="w-6 h-6" />{" "}
+                <img src={Icons.food} alt="" className="w-6 h-6" />
                 <h1>Food</h1>
               </div>
             </div>
+
             {/* Description */}
             <p className="text-gray-300 text-sm mt-1">
               {destinationData.description}
             </p>
 
-            {/* List */}
+            {/* Itinerary */}
             <ul className="text-sm text-gray-400 space-y-2.5 mt-2">
               {destinationData.itinerary.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -109,14 +101,15 @@ const ShareModal = ({ isOpen, onClose, destinationData }) => {
                 </li>
               ))}
             </ul>
+
             <div className="flex items-center justify-center">
-              <button className=" mt-6 bg-Primary  text-white text-sm font-medium rounded-lg w-[250px] py-2 cursor-pointer">
+              <button className="mt-6 bg-Primary text-white text-sm font-medium rounded-lg w-[250px] py-2 cursor-pointer">
                 View Details
               </button>
             </div>
           </div>
 
-          {/* Post / Share Button */}
+          {/* Post Button */}
           <button
             onClick={async () => {
               try {
@@ -126,11 +119,10 @@ const ShareModal = ({ isOpen, onClose, destinationData }) => {
                     text: destinationData.description,
                   });
                 }
-                // Fallback: Just close modal silently (no alert)
                 navigate("/expedition");
                 onClose();
               } catch (error) {
-                onClose(); // User cancels share → just close, no alert
+                onClose();
               }
             }}
             className="w-full bg-[#000000] py-2 rounded-lg font-semibold mt-4 cursor-pointer"

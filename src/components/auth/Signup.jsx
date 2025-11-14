@@ -114,6 +114,15 @@ const Signup = () => {
           >
             Sign Up
           </button>
+          <p className="text-center text-sm mt-4">
+  Already have an account?{" "}
+  <span
+    className="text-white cursor-pointer hover:underline font-semibold"
+    onClick={() => navigate("/login")}
+  >
+    Sign In
+  </span>
+</p>
         </form>
 
         {/* Social login */}
