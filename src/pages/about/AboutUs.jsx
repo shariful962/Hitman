@@ -13,9 +13,9 @@ export default function AboutUs() {
         {/* Travel Image */}
         <div className="w-full mb-12">
           <img
-            src={Icons.adv1}
+            src={Icons.maria}
             alt="Travel"
-            className="h-[250px] w-[250px] md:w-3/4 rounded-xl shadow-lg object-cover"
+            className="md:h-[500px] h-[300px] w-[250px] w-full md:w-3/4 rounded-xl shadow-lg object-cover"
           />
           {/* <img src={Icons.picture2}  alt="" className="w-[300px] h-auto" /> */}
         </div>

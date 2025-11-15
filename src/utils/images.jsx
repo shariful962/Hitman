@@ -48,11 +48,13 @@ import picture2 from '../assets/chatbot/Picture1.png';
 import adventrue from '../assets/chatbot/adventure.jpg'
 import adv1 from '../assets/chatbot/adv1.png'
 import adv2 from '../assets/chatbot/adv.png'
+import maria from '../assets/chatbot/1000015637.jpg'
 
 
 
 
 const Icons = {
+  maria: maria,
   adv1: adv1,
   adv2: adv2,
   evening: evening,
