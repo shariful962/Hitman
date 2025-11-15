@@ -1,48 +1,117 @@
 import React from "react";
+import Icons from "../../utils/images";
 
 export default function AboutUs() {
   return (
     <div className="containerBox">
-    <div className="max-w-6xl mx-auto   py-16 text-white px-4 ">
-      {/* Header */}
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-Primary mb-10 pt-24">
-        About Us
-      </h1>
+      <div className="max-w-6xl mx-auto py-16 text-white px-4">
+        {/* Header */}
+        <h1 className="text-3xl md:text-[42px] font-medium text-left text-Primary mb-6 pt-24">
+          About Us
+        </h1>
 
-      {/* Our Mission */}
-      <section className="mb-14">
-        <h2 className="text-2xl font-semibold mb-4 text-Primary">Our Mission</h2>
-        <p className="text-gray-300 leading-7">
-          Our mission is to create smart, modern, and user-friendly digital
-          solutions that help people and businesses work faster, smoother, and
-          better. We focus on innovation, simplicity, and long-term value.
-        </p>
-      </section>
+        {/* Travel Image */}
+        <div className="w-full mb-12">
+          <img
+            src={Icons.adv1}
+            alt="Travel"
+            className="h-[250px] w-[250px] md:w-3/4 rounded-xl shadow-lg object-cover"
+          />
+          {/* <img src={Icons.picture2}  alt="" className="w-[300px] h-auto" /> */}
+        </div>
 
-      {/* Our Values */}
-      <section className="mb-14">
-        <h2 className="text-2xl font-semibold mb-4 text-Primary">Our Values</h2>
-        <ul className="space-y-3 text-gray-300">
-          <li>• Innovation – We explore new ideas and technologies.</li>
-          <li>• Quality – We care about clean, scalable, and polished work.</li>
-          <li>• User-First – We always prioritize user experience.</li>
-          <li>• Trust – We build strong and lasting relationships.</li>
-          <li>• Growth – We improve continuously and adapt fast.</li>
-        </ul>
-      </section>
+        {/* Our Story (Added Section) */}
+        <section className="mb-14 rounded-xl">
+          <h2 className="text-2xl font-semibold mb-4 text-Primary">
+            Our Story
+          </h2>
 
-      {/* Why Choose Us */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4 text-Primary">Why Choose Us</h2>
-        <p className="text-gray-300 leading-7">
-          We deliver digital experiences that are not only functional but also
-          meaningful. Our team is passionate, detail-oriented, and committed to
-          delivering results that truly make a difference. We combine creativity,
-          modern technologies, and strategic thinking to build products you can
-          rely on.
-        </p>
-      </section>
-    </div>
+          <div className="space-y-5 text-gray-300 leading-7">
+            <p>
+              We’re <span className="font-bold text-lg">Granit and Maria</span>{" "}
+              — partners in life, adventure, and now, travel innovation.
+            </p>
+
+            <p>
+              <strong>Our story began the way the best ones do:</strong> with a
+              shared curiosity for the world and a love for the kind of
+              experiences you can’t find in guidebooks. From our first trip
+              together, we knew travel wasn’t just about ticking off famous
+              landmarks — it was about discovering those hidden cafés down quiet
+              alleys, top-tier romantic dinners, and that tucked-away beach only
+              locals know about.
+            </p>
+
+            <p>
+              That bright blue alley? It’s just steps away from one of Puerto
+              Rico’s best-kept secrets —{" "}
+              <a
+                href="https://www.marmaladepr.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-Primary underline hover:text-Primary/80 transition"
+              >
+                Marmalade
+              </a>
+              . We didn’t read about it online, <strong>we found it the old-fashioned
+              way:</strong> wandering hand in hand through town, letting curiosity lead
+              us to something unforgettable.
+            </p>
+
+            <p>
+              <strong>But here’s the problem we kept running into:</strong> finding these gems
+              took hours — sometimes days — of scrolling through Instagram
+              hashtags, Reddit threads, and endless blog posts. We wanted the
+              magic without the marathon search before each trip.
+            </p>
+
+            <p>
+              That’s when the idea for{" "}
+              <span className="text-Primary font-semibold">Hitman Jack</span>{" "}
+              was born. We decided to create a travel app that works like a
+              well-connected friend who knows exactly what you like.
+              Personalized itineraries. Handpicked experiences. The best of each
+              place — without the information overload.
+            </p>
+
+            <p className="text-white font-medium">With Hitman Jack, you can:</p>
+
+            <ul className="space-y-2 pl-4 list-disc ml-4">
+              <li>
+                <span className="font-bold">Discover</span> curated “things to do” lists based on your vibe,
+                location, and travel dates.
+              </li>
+              <li>
+                <span className="font-bold">Save</span> your favorite spots into collections you can revisit
+                anytime.
+              </li>
+              <li>
+               <span className="font-bold">Share</span> trip ideas easily with friends, family, or your travel
+                crew.
+              </li>
+            </ul>
+
+            <p>
+              No more endless scrolling. No more decision fatigue. Just your
+              trip, your way.
+            </p>
+
+            <p>
+              Whether you’re chasing adrenaline, looking for romance, or craving
+              a quiet escape, we built Hitman Jack Travel so you can spend less
+              time searching and more time experiencing the moments that matter.
+            </p>
+
+            <p>We’ve lived it. We love it. And now we’re sharing it.</p>
+
+            <p className="pt-2 font-semibold text-white">
+              Maria & Granit
+              <br />
+              <span className="text-Primary">Founders, Hitman Jack Travel</span>
+            </p>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

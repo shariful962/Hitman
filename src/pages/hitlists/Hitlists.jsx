@@ -1,10 +1,11 @@
-
+// // src/components/hitlists/Hitlists.jsx
 // import React, { useState } from "react";
 // import Selected from "../../common/Selected";
 // import { FaSearch, FaRegHeart, FaHeart } from "react-icons/fa";
 // import { RiShareForwardLine } from "react-icons/ri";
 // import Icons from "../../utils/images";
 // import PostCard from "../expedition/PostCard";
+// import ShareModal from "./ShareModal";
 // import { useNavigate, Outlet } from "react-router-dom";
 
 // const trips = [
@@ -17,6 +18,8 @@
 // const Hitlists = () => {
 //   const navigate = useNavigate();
 //   const [likedTrips, setLikedTrips] = useState([]);
+//   const [isShareOpen, setIsShareOpen] = useState(false);
+//   const [selectedTrip, setSelectedTrip] = useState(null);
 
 //   const toggleLike = (id) => {
 //     setLikedTrips((prev) =>
@@ -24,10 +27,21 @@
 //     );
 //   };
 
+//   const openShareModal = (trip) => {
+//     setSelectedTrip({
+//       ...trip,
+//       userText: "",
+//       description: "Explore this amazing destination!", // default text
+//       itinerary: ["Eiffel Tower & Seine Cruise", "Louvre & Montmartre Sunset ", "Versailles & Le Marais Walk "], // sample
+//       name: "John Doe", // sample user
+//     });
+//     setIsShareOpen(true);
+//   };
+
 //   return (
 //     <div className="containerBox px-4">
 //       <div className="max-w-6xl mx-auto">
-//         <h1 className="text-3xl md:text-[42px] mt-28 font-medium mb-6 ml-3 text-white">
+//         <h1 className="text-3xl md:text-[42px] mt-34 font-medium mb-4 ml-3 text-white">
 //           Hitlists
 //         </h1>
 
@@ -52,7 +66,6 @@
 //           Mission Vault
 //         </h1>
 
-//         {/* Mission Vault cards */}
 //         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
 //           {trips.map((trip) => (
 //             <div
@@ -89,10 +102,9 @@
 //                     )}
 //                   </button>
 
-//                   {/* Share button: UI only, no functionality */}
 //                   <button
 //                     className="flex items-center gap-2 cursor-pointer"
-//                     onClick={(e) => e.preventDefault()} // do nothing on click
+//                     onClick={() => openShareModal(trip)}
 //                   >
 //                     <RiShareForwardLine size={24} />
 //                     <span className="text-sm">Share</span>
@@ -102,7 +114,17 @@
 //             </div>
 //           ))}
 //         </div>
-// {/* on the radar  */}
+
+//         {/* Share Modal */}
+//         {selectedTrip && (
+//           <ShareModal
+//             isOpen={isShareOpen}
+//             onClose={() => setIsShareOpen(false)}
+//             destinationData={selectedTrip}
+//           />
+//         )}
+
+//         {/* On the Radar Section */}
 //         <h1 className="text-3xl md:text-[42px] mt-6 font-medium mb-6 text-white">
 //           On the Radar
 //         </h1>
@@ -138,8 +160,6 @@
 // export default Hitlists;
 
 
-
-// src/components/hitlists/Hitlists.jsx
 import React, { useState } from "react";
 import Selected from "../../common/Selected";
 import { FaSearch, FaRegHeart, FaHeart } from "react-icons/fa";
@@ -172,9 +192,13 @@ const Hitlists = () => {
     setSelectedTrip({
       ...trip,
       userText: "",
-      description: "Explore this amazing destination!", // default text
-      itinerary: ["Eiffel Tower & Seine Cruise", "Louvre & Montmartre Sunset ", "Versailles & Le Marais Walk "], // sample
-      name: "John Doe", // sample user
+      description: "Explore this amazing destination!",
+      itinerary: [
+        "Eiffel Tower & Seine Cruise",
+        "Louvre & Montmartre Sunset",
+        "Versailles & Le Marais Walk",
+      ],
+      name: "John Doe",
     });
     setIsShareOpen(true);
   };
@@ -190,6 +214,7 @@ const Hitlists = () => {
           <Selected />
         </div>
 
+        {/* Search Box */}
         <div className="ml-4 mb-6">
           <div className="flex items-center rounded-[8px] p-2 bg-dark2 w-80">
             <input
@@ -203,35 +228,51 @@ const Hitlists = () => {
           </div>
         </div>
 
+        {/* Mission Vault */}
         <h1 className="text-3xl md:text-[42px] mt-6 font-medium mb-6 ml-2 text-white">
           Mission Vault
         </h1>
 
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {trips.map((trip) => (
             <div
               key={trip.id}
-              className="bg-[#0f0f0f] rounded-2xl shadow-lg overflow-hidden text-white p-4 pb-4"
+              className="relative bg-[#0f0f0f] rounded-2xl overflow-hidden text-white"
             >
+              {/* Full Image */}
               <img
                 src={trip.image}
                 alt={trip.title}
-                className="w-full h-44 object-cover rounded-lg"
+                className="w-full h-[300px] object-cover"
               />
-              <div className="mt-4">
-                <div className="flex items-center gap-x-2.5">
-                  <img src={trip.icon} alt={trip.title} className="w-7.5 h-7.5 object-cover" />
-                  <h2 className="text-sm">{trip.title}</h2>
+
+              {/* Dark Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+
+              {/* Overlay Content */}
+              <div className="absolute bottom-0 left-0 w-full p-4">
+
+                {/* Title */}
+                <div className="flex items-center gap-x-2.5 mb-3">
+                  <img
+                    src={trip.icon}
+                    alt={trip.title}
+                    className="w-7.5 h-7.5 object-cover"
+                  />
+                  <h2 className="text-sm font-medium">{trip.title}</h2>
                 </div>
 
+                {/* View Details */}
                 <button
                   onClick={() => navigate(`/hitlists/trip/${trip.id}`)}
-                  className="mt-4 w-full bg-Primary text-white py-1.5 rounded-lg font-medium cursor-pointer"
+                  className="w-full bg-Primary text-white py-1.5 rounded-lg font-medium cursor-pointer mb-3"
                 >
                   View Details
                 </button>
 
-                <div className="flex justify-between items-center mt-4 text-white px-1">
+                {/* Like + Share */}
+                <div className="flex justify-between items-center text-white px-1">
                   <button
                     className="cursor-pointer"
                     onClick={() => toggleLike(trip.id)}
@@ -265,7 +306,7 @@ const Hitlists = () => {
           />
         )}
 
-        {/* On the Radar Section */}
+        {/* On the Radar */}
         <h1 className="text-3xl md:text-[42px] mt-6 font-medium mb-6 text-white">
           On the Radar
         </h1>
@@ -299,6 +340,7 @@ const Hitlists = () => {
 };
 
 export default Hitlists;
+
 
 
 

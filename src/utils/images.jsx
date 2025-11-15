@@ -44,12 +44,20 @@ import calIcn from "../assets/view/calenderIcon.png"
 import img from '../assets/chatbot/postImage.png';
 import loc from '../assets/chatbot/postLocation.png';
 import plane from '../assets/chatbot/plane.svg'
+import picture2 from '../assets/chatbot/Picture1.png';
+import adventrue from '../assets/chatbot/adventure.jpg'
+import adv1 from '../assets/chatbot/adv1.png'
+import adv2 from '../assets/chatbot/adv.png'
 
 
 
 
 const Icons = {
+  adv1: adv1,
+  adv2: adv2,
   evening: evening,
+  picture2: picture2,
+  adventrue: adventrue,
   plane: plane,
   img: img,
   loc: loc,
