@@ -529,7 +529,7 @@ export default function Header() {
         )}
 
         {/* Mobile Hamburger Icon */}
-        <div className="ml-auto">
+        <div className="lg:hidden ml-auto">
           <div className="w-12 h-12 rounded-full flex items-center justify-center bg-Primary text-white">
             <button
               className="lg:hidden text-white text-2xl"
