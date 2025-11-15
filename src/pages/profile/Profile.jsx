@@ -29,7 +29,7 @@ const Profile = () => {
     navigate("/");
   };
   return (
-    <div className="min-h-screen bg-dark flex flex-col items-center justify-center py-10 text-white pt-20">
+    <div className="min-h-screen bg-dark flex flex-col items-center justify-center py-10 text-white pt-20 px-4">
       {/* profile name and email with image  */}
       <div className="flex flex-col items-center mb-8">
         <img

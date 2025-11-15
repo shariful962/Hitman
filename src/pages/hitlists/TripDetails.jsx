@@ -61,7 +61,7 @@ const TripDetails = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto text-white mt-10 space-y-8 pt-28 pb-4">
+    <div className="max-w-3xl mx-auto text-white mt-10 space-y-8 pt-28 pb-4 px-4">
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}
@@ -106,7 +106,7 @@ const TripDetails = () => {
 
       {/* Daily itinerary cards */}
       {tripData.days.map((day, idx) => (
-        <div key={idx} className="bg-dark2 rounded-xl p-4 space-y-4  w-[600px]">
+        <div key={idx} className="bg-dark2 rounded-xl p-4 space-y-4  max-w-[600px]">
           <h2 className="text-xl font-semibold">{day.title}</h2>
           <div className="h-[200px] overflow-hidden rounded-xl">
             <img
